@@ -47,23 +47,11 @@ class RevenueCatService {
     print("fetchSubscriptionPackages ${entitlementID}");
     try {
       final offerings = await Purchases.getOfferings();
-      // final products = Purchases.getProducts([ProductIds.oneMonth, ProductIds.oneYear]);
-      // final oooff = offerings.current?.availablePackages;
       print('offfffff: ${offerings}');
       final currentOffering = offerings.all['default'];
       if (currentOffering != null) {
         print('offfffff1111: ${currentOffering.availablePackages}');
         return currentOffering.availablePackages;
-        // for (Package package in currentOffering.availablePackages) {
-        //   // debugPrint(
-        //   //     "package ${package.storeProduct.subscriptionOptions}"
-        //   //         " ${package.storeProduct.subscriptionPeriod} "
-        //   //         "${package.packageType}"
-        //   //         " ${package.storeProduct.title}"
-        //   //         " ${package.storeProduct.identifier}");
-        //   packages.add(package);
-        //   products.add(PackageModel.fromPackage(package));
-        // }
       } else {
         print("No subscriptions available");
       }
